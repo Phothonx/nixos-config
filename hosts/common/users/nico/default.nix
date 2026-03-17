@@ -25,6 +25,7 @@ in {
       "wheel"
       "networkmanager"
       "adbuser"
+      "input"
     ];
   };
 

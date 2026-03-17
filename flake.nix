@@ -23,6 +23,8 @@
     # Ignis for hyprland shell
     ignis.url = "github:ignis-sh/ignis";
     ignis.inputs.nixpkgs.follows = "nixpkgs";
+
+    crossmacro.url = "github:alper-han/CrossMacro";
   };
 
   outputs = {

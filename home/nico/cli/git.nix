@@ -17,7 +17,7 @@
   programs.git = {
     enable = true;
     signing.format = null;
-    ignores = lib.splitString "\n" (builtins.readFile ./ignores);
+    ignores = lib.splitString "\n" (builtins.readFile ./ignore);
     includes = [
       {
         path = config.sops.secrets."git_config/github".path;
@@ -34,13 +34,14 @@
 
       core = {
         editor = "nvim";
-        exludesFile = "${config.xdg.configHome}/git/ignore";
+        hooksPath = ".githooks";
+        excludesFile = "${config.xdg.configHome}/git/ignore";
       };
 
       merge = {
         tool = "nvimdiff";
         conflictstyle = "diff3";
-        ff = false;
+        ff = "only";
       };
 
       pull.rebase = false;

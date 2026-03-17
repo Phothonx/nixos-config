@@ -17,9 +17,8 @@ Thumbs.db
 .asm-lsp.toml
 .envrc
 .gdbinit
-.clang-format
 .direnv
-.envrc
+!.gitkeep
 
 # ========================
 # Python
@@ -31,8 +30,8 @@ venv/
 __pycache__/
 env/
 ENV/
-build/
-dist/
+build/*
+dist/*
 *.egg-info/
 .eggs/
 
@@ -100,6 +99,6 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-dist/
-build/
+dist/*
+build/*
 .env
