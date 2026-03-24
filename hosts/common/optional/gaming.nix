@@ -1,7 +1,8 @@
-{pkgs, inputs, ...}:
 {
-
-  imports = [inputs.crossmacro.nixosModules.default];
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.gamemode = {
     enable = true;
     settings = {
@@ -15,9 +16,5 @@
   programs.gamescope = {
     # package = pkgs-old.gamescope;
     enable = true;
-  };
-  programs.crossmacro = {
-    enable = true;
-    users = [ "nico" ];
   };
 }

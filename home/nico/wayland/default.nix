@@ -4,6 +4,6 @@
 
     ./hyprlock.nix
     ./vicinae.nix
-    ./ignis.nix
+    ./noctalia.nix
   ];
 }

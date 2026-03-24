@@ -20,11 +20,8 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Ignis for hyprland shell
-    ignis.url = "github:ignis-sh/ignis";
-    ignis.inputs.nixpkgs.follows = "nixpkgs";
-
-    crossmacro.url = "github:alper-han/CrossMacro";
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -70,5 +67,10 @@
       "avalon" # laptop
       "crystal" # raspi3
     ];
+
+    nixConfig = {
+      extra-substituters = ["https://noctalia.cachix.org"];
+      extra-trusted-public-keys = ["noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="];
+    };
   };
 }
