@@ -41,10 +41,13 @@
       merge = {
         tool = "nvimdiff";
         conflictstyle = "diff3";
-        ff = "only";
+        ff = "false";
       };
 
-      pull.rebase = false;
+      pull = {
+        rebase = false;
+        ff = "only";
+      };
 
       mergetool = {
         nvimdiff = {

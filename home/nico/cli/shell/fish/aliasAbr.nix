@@ -53,6 +53,7 @@
       gs = "git status";
       gau = "git add --update";
       gf = "git fetch";
+      gm = "git merge";
       gmt = "git mergetool";
       gc = "git commit";
       gaa = "git add --all";
