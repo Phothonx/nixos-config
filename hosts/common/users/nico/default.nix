@@ -26,6 +26,7 @@ in {
       "networkmanager"
       "adbuser"
       "input"
+      "dialout"
     ];
   };
 

@@ -106,4 +106,6 @@ in {
       inherit extraCss;
     };
   };
+
+  gtk.gtk4.theme = null;
 }

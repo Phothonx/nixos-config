@@ -2,7 +2,6 @@
   imports = [
     ./openvpn.nix
     ./gaming.nix
-    # ./agenix.nix
     ./sops.nix
     ./bluetooth.nix
     ./fish.nix
@@ -11,7 +10,6 @@
     ./networking.nix
     ./nh.nix
     ./pipewire.nix
-    # ./ssh.nix
     # ./quietboot.nix
     ./systemd-boot.nix
     # ./tlp.nix
@@ -20,7 +18,7 @@
     ./graphics.nix
     ./nix-ld.nix
     ./udev.nix
-    ./upower.nix
+    ./power.nix
     ./utils.nix
   ];
 }

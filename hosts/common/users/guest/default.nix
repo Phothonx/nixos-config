@@ -22,7 +22,6 @@ in {
       "gamemode"
       "wheel"
       "networkmanager"
-      "adbuser"
     ];
 
     openssh.authorizedKeys.keys = [

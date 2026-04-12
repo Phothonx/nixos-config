@@ -7,8 +7,8 @@
 in {
   wayland.windowManager.hyprland.settings = {
     exec-once = with pkgs; [
-      "${swww}/bin/swww-daemon"
-      "${swww}/bin/swww img ${wallpaper} --transition-type none"
+      "${awww}/bin/swww-daemon"
+      "${awww}/bin/swww img ${wallpaper} --transition-type none"
 
       "hyprctl setcursor ${cursor.name} ${builtins.toString cursor.size}"
 
