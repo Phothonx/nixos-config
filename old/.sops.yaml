@@ -1,0 +1,15 @@
+keys:
+  - &recovery age1tu0yje7s2rx03at4r7ggs4l7tceph75gezgf5sl7c7w3sup2tf7sa2wkpe
+  - &hosts
+    - &avalon age18aqpfcqsyx5ak95wjn2udz573lkxmza6k27jeele2vmk9t2gcaqq39jvwa
+    - &crystal age1qzymt6r3hdwtl9qhx98pzudzd0ju0tjkvcpu9q69xadvt6vph95qgz7wxw
+  - &users
+    - &nico age1y7yxkvc7nqtt0ap3xl796qjenz5lv05vq0sctljexytlwpw2j9vsufxdlj
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *avalon
+        - *crystal
+        - *nico
+        - *recovery

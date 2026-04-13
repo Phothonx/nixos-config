@@ -1,71 +1,28 @@
 {
-  description = ''My personal config flake'';
-
   inputs = {
-    # NixPkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Home manager
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
 
-    # NUR
-    nur.url = "github:nix-community/NUR";
-    nur.inputs.nixpkgs.follows = "nixpkgs";
+    wrappers.url = "github:BirdeeHub/nix-wrapper-modules";
+    wrappers.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Hardware
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Agenix/Sops
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    noctalia.url = "github:noctalia-dev/noctalia-shell";
-    noctalia.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    lib = nixpkgs.lib // home-manager.lib;
-
-    systems = [
-      "x86_64-linux"
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ (inputs.import-tree [ ./modules ./packages ]) ];
+      systems = [
+      # "aarch64-darwin"
       "aarch64-linux"
-    ];
-
-    # set with pkgs for each system
-    pkgsFor = lib.genAttrs systems (
-      system:
-        import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        }
-    );
-    forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-
-    mkNixosSystems = hostNames:
-      lib.genAttrs hostNames (hostName:
-        lib.nixosSystem {
-          modules = [./hosts/${hostName}/configuration.nix];
-          specialArgs = {inherit self inputs outputs hostName;};
-        });
-  in {
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home;
-    templates = import ./templates;
-    overlays = import ./overlays;
-
-    packages = forEachSystem (pkgs: import ./packages pkgs);
-    formatter = forEachSystem (pkgs: pkgs.alejandra);
-
-    nixosConfigurations = mkNixosSystems [
-      "avalon" # laptop
-      "crystal" # raspi3
-    ];
+      # "x86_64-darwin" deprecated
+      "x86_64-linux"
+      ];
   };
 }
