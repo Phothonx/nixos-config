@@ -3,30 +3,16 @@ vim.g.maplocalleader = "\\"
 
 require("config.options")
 
-require("lazy").setup({
-  read_only = true,
-  spec = { { import = "plugins" }, },
-  performance = {
-    reset_packpath = false,
-    rtp = {
-      reset = false,
-      disabled_plugins = {
-        "gzip",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      },
-    },
-  },
-  rocks = { enabled = false },
-  pkg = { enabled = false },
-  install = { missing = false },
-  change_detection = { enabled = false },
-  checker = { enabled = false },
-  ui = { border = "single", },
-  defaults = { lazy = false, },
-})
+require("plugins.catppuccin")
+require("plugins.mini")
+require("plugins.snacks")
+require("plugins.treesitter")
+require("plugins.blink-cmp")
+require("plugins.flash")
+require("plugins.iron")
+require("plugins.coqtail")
+require("plugins.vimwiki")
+require("plugins.which-key")
 
 require("config.lsp")
 require("config.keymaps")

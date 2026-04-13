@@ -6,6 +6,7 @@
       package = self'.packages.fish;
       extraPackages = with pkgs; [
         self'.packages.neovim
+        self'.packages.git
 
         # CLI Tools
         yazi

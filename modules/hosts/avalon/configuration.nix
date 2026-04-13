@@ -1,6 +1,6 @@
 {self, ... }: {
 
-  flake.nixosModules.avalonConfiguration = { ... }: {
+  flake.nixosModules.avalonConfiguration = { pkgs, ... }: {
     imports = [
       self.nixosModules.avalonHardware
 
@@ -8,11 +8,37 @@
       self.nixosModules.power
       self.nixosModules.nh
       self.nixosModules.desktop
+      self.nixosModules.sops
 
       self.nixosModules.nico
     ];
 
     # TODO see corectrl
+
+    environment.systemPackages = with pkgs; [
+      mission-planner
+      # kdePackages.kdenlive
+      evemu
+      celluloid
+      vlc
+      loupe
+      imv
+      bitwarden-desktop
+      spotify
+      localsend
+      teamspeak6-client
+      ungoogled-chromium
+      vesktop
+      discord
+    ];
+
+    programs.obs-studio = {
+      enable = true;
+      plugins = with pkgs; [
+        obs-studio-plugins.wlrobs
+        obs-move-transition
+      ];
+    };
 
     services.logind = {
       settings.Login = {

@@ -9,7 +9,7 @@
     in inputs.wrappers.wrappers.neovim.wrap {
       inherit pkgs;
 
-      settings.config_directory = "/home/nico/Dev/nvim/";
+      settings.config_directory = ./nvim;
 
       specs.plugins = {
         data = with pkgs.vimPlugins; [

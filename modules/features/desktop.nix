@@ -1,14 +1,21 @@
 {self, ...}: {
-  flake.nixosModules.desktop = {pkgs, ...}: {
+  flake.nixosModules.desktop = {pkgs, self', ...}: {
     imports = [
       # self.nixosModules.gtk
       self.nixosModules.pipewire
       self.nixosModules.firefox
-      self.nixosModules.chromium
     ];
 
-    environment.systemPackages = [
-      pkgs.pcmanfm
+    programs.niri = {
+      enable = true;
+      package = self'.packages.niri;
+    };
+
+    environment.systemPackages = with pkgs; [
+      self'.packages.noctalia
+      self'.packages.kitty
+
+      pcmanfm
     ];
 
     security.polkit.enable = true;
