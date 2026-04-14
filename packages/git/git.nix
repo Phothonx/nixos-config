@@ -1,5 +1,9 @@
-{ inputs, ... }: {
-  perSystem = { pkgs, self', ... }: let
+{inputs, ...}: {
+  perSystem = {
+    pkgs,
+    self',
+    ...
+  }: let
     gitIgnore = pkgs.writeText "git-ignore" (builtins.readFile ./ignore);
 
     gitConfig = pkgs.writeText "gitconfig" ''

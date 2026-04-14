@@ -1,5 +1,9 @@
 {...}: {
-  flake.nixosModules.xdg = {pkgs, config, ...}: {
+  flake.nixosModules.xdg = {
+    pkgs,
+    config,
+    ...
+  }: {
     # TODO review all
 
     home.sessionVariables = with config.xdg; {

@@ -1,11 +1,17 @@
-{self, ... }: {
-  flake.nixosModules.nico = { pkgs, config, self', lib, ... }: {
+{self, ...}: {
+  flake.nixosModules.nico = {
+    pkgs,
+    config,
+    self',
+    lib,
+    ...
+  }: {
     imports = [
       self.nixosModules.sops
     ];
 
     users.mutableUsers = false;
-    sops.secrets."user_passwords/nico" = { neededForUsers = true; };
+    sops.secrets."user_passwords/nico" = {neededForUsers = true;};
     users.users.nico = {
       shell = pkgs.bashInteractive;
       hashedPasswordFile = config.sops.secrets."user_passwords/nico".path;

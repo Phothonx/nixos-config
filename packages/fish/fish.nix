@@ -1,5 +1,9 @@
 {inputs, ...}: {
-  perSystem = {pkgs, lib, ...}: let
+  perSystem = {
+    pkgs,
+    lib,
+    ...
+  }: let
     fishConf = pkgs.writeText "wrapped-config.fish" ''
       set -g fish_color_option blue
 
@@ -87,7 +91,7 @@
         echo -n -s $fhs_env_info $nix_shell_info (prompt_login)' ' (set_color $color_cwd) "["(prompt_pwd)"]" $normal (fish_vcs_prompt) $normal " "$prompt_status $suffix " "
       end
     '';
-    in {
+  in {
     packages.fish = inputs.wrappers.lib.wrapPackage {
       inherit pkgs;
 

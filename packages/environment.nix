@@ -1,5 +1,10 @@
 {inputs, ...}: {
-  perSystem = {pkgs, lib, self', ...}: {
+  perSystem = {
+    pkgs,
+    lib,
+    self',
+    ...
+  }: {
     packages.environment = inputs.wrappers.lib.wrapPackage {
       inherit pkgs;
 

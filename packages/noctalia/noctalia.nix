@@ -1,5 +1,5 @@
-{ inputs, ... }: {
-  perSystem = { pkgs, ... }: {
+{inputs, ...}: {
+  perSystem = {pkgs, ...}: {
     packages.noctalia = inputs.wrappers.wrappers.noctalia-shell.wrap {
       inherit pkgs;
 

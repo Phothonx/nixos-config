@@ -1,5 +1,10 @@
-{ inputs, ... }: {
-  perSystem = { pkgs, lib, self', ... }: {
+{inputs, ...}: {
+  perSystem = {
+    pkgs,
+    lib,
+    self',
+    ...
+  }: {
     packages.niri = inputs.wrappers.wrappers.niri.wrap {
       inherit pkgs;
       settings = {
@@ -15,7 +20,7 @@
 
         binds = {
           "Mod+Return".spawn-sh = lib.getExe self'.packages.kitty;
-          "Mod+Q".close-window = _:{};
+          "Mod+Q".close-window = _: {};
           "Mod+S".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call launcher toggle";
         };
       };

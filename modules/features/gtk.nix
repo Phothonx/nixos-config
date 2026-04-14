@@ -1,6 +1,6 @@
 {
   # flake.nixosModules.gtk = {pkgs, config, ... }: let
-    # TODO review all
+  # TODO review all
   #   inherit (config) colorScheme icons fontsProfiles cursor;
   #
   #   extraCss = with colorScheme.base24; ''

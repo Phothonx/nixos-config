@@ -1,5 +1,9 @@
 {self, ...}: {
-  flake.nixosModules.desktop = {pkgs, self', ...}: {
+  flake.nixosModules.desktop = {
+    pkgs,
+    self',
+    ...
+  }: {
     imports = [
       # self.nixosModules.gtk
       self.nixosModules.pipewire

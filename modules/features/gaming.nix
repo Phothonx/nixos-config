@@ -1,6 +1,5 @@
 {...}: {
-  flake.nixosModules.gaming = { pkgs, ... }: {
-
+  flake.nixosModules.gaming = {pkgs, ...}: {
     programs = {
       gamemode.enable = true;
       gamescope.enable = true;
@@ -31,7 +30,6 @@
     ];
 
     # services.zerotierone.enable = true;
-
 
     nix.settings = {
       substituters = ["https://nix-gaming.cachix.org"];

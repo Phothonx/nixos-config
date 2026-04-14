@@ -16,13 +16,13 @@
   };
 
   outputs = inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ (inputs.import-tree [ ./modules ./packages ]) ];
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [(inputs.import-tree [./modules ./packages])];
       systems = [
-      # "aarch64-darwin"
-      "aarch64-linux"
-      # "x86_64-darwin" deprecated
-      "x86_64-linux"
+        # "aarch64-darwin"
+        "aarch64-linux"
+        # "x86_64-darwin" deprecated
+        "x86_64-linux"
       ];
-  };
+    };
 }

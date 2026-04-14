@@ -1,6 +1,5 @@
-{self, ... }: {
-
-  flake.nixosModules.avalonConfiguration = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.avalonConfiguration = {pkgs, ...}: {
     imports = [
       self.nixosModules.avalonHardware
 
