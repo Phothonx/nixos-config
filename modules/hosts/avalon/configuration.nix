@@ -14,6 +14,7 @@
     ];
 
     # TODO see corectrl
+    # TODO ssh
 
     environment.systemPackages = with pkgs; [
       mission-planner
@@ -30,6 +31,8 @@
       ungoogled-chromium
       vesktop
       discord
+      pavucontrol
+      crosspipe
     ];
 
     programs.obs-studio = {
