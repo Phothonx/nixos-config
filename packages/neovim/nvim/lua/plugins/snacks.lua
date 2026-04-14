@@ -17,26 +17,26 @@ Snacks.setup({
   },
 })
 
-Snacks.toggle.option("spell", { name = "Spelling" }):map("us")
-Snacks.toggle.option("wrap", { name = "Wrap" }):map("uw")
-Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("r")
-Snacks.toggle.diagnostics():map("ud")
-Snacks.toggle.line_number():map("ul")
-Snacks.toggle.option("conceallevel", {
-  off = 0,
-  on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2,
-}):map("ue")
-Snacks.toggle.treesitter():map("uT")
-Snacks.toggle.option("background", {
-  off = "light",
-  on = "dark",
-  name = "Dark Background",
-}):map("ub")
-Snacks.toggle.inlay_hints():map("uh")
-Snacks.toggle.indent():map("ug")
-Snacks.toggle.dim():map("uD")
-Snacks.toggle.option("hlsearch", { name = "Highlight search" }):map("uH")
-Snacks.toggle.option("cursorline", { name = "Cursor line" }):map("uc")
+-- Snacks.toggle.option("spell", { name = "Spelling" }):map("us")
+-- Snacks.toggle.option("wrap", { name = "Wrap" }):map("uw")
+-- Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("r")
+-- Snacks.toggle.diagnostics():map("ud")
+-- Snacks.toggle.line_number():map("ul")
+-- Snacks.toggle.option("conceallevel", {
+--   off = 0,
+--   on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2,
+-- }):map("ue")
+-- Snacks.toggle.treesitter():map("uT")
+-- Snacks.toggle.option("background", {
+--   off = "light",
+--   on = "dark",
+--   name = "Dark Background",
+-- }):map("ub")
+-- Snacks.toggle.inlay_hints():map("uh")
+-- Snacks.toggle.indent():map("ug")
+-- Snacks.toggle.dim():map("uD")
+-- Snacks.toggle.option("hlsearch", { name = "Highlight search" }):map("uH")
+-- Snacks.toggle.option("cursorline", { name = "Cursor line" }):map("uc")
 
 vim.keymap.set("n", "<leader>`", function() Snacks.terminal() end, { desc = "Toggle Terminal" })
 vim.keymap.set("n", "<leader><space>", function() Snacks.picker.smart() end, { desc = "Smart Find Files" })

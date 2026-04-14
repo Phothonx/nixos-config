@@ -16,7 +16,7 @@
       set -g fish_vi_force_cursor 1
 
       alias ls '${lib.getExe pkgs.eza} --icons=always --git --group-directories-first --header'
-      alias cd '${lib.getExe pkgs.zoxide}'
+      alias cd 'z'
       alias cp 'cp --verbose'
       alias mv 'mv --verbose'
       alias rm 'rm --interactive=once --verbose'

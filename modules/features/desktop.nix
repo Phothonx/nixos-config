@@ -1,7 +1,6 @@
 {self, ...}: {
   flake.nixosModules.desktop = {
     pkgs,
-    self',
     ...
   }: {
     imports = [
@@ -9,16 +8,17 @@
       self.nixosModules.pipewire
       self.nixosModules.firefox
       self.nixosModules.xkb
+      self.nixosModules.xdg
     ];
 
     programs.niri = {
       enable = true;
-      package = self'.packages.niri;
+      package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
     };
 
     environment.systemPackages = with pkgs; [
-      self'.packages.noctalia
-      self'.packages.kitty
+      self.packages.${pkgs.stdenv.hostPlatform.system}.noctalia
+      self.packages.${pkgs.stdenv.hostPlatform.system}.kitty
 
       pcmanfm
     ];

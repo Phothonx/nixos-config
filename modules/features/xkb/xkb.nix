@@ -9,7 +9,7 @@
         nico = {
           description = "My custom xkb layout.";
           languages = ["eng" "fr"];
-          symbolsFile = ../nico;
+          symbolsFile = ./nico;
         };
       };
     };

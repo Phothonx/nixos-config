@@ -1,63 +1,19 @@
 {...}: {
-  flake.nixosModules.xdg = {
-    pkgs,
-    config,
-    ...
-  }: {
-    # TODO review all
-
-    home.sessionVariables = with config.xdg; {
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-
-      BROWSER = "firefox";
-      DEFAULT_BROWSERS = "firefox";
-      TERMINAL = "kitty";
-
-      # home cleaning
-      CARGO_HOME = "${dataHome}/cargo";
-      IPYTHONDIR = "${configHome}/ipython";
-      JUPYTER_CONFIG_DIR = "${configHome}/jupyter";
-      XCOMPOSECACHE = "${cacheHome}/X11/xcompose";
-      OPAMROOT = "${dataHome}/opam";
-      ERRFILE = "${cacheHome}/X11/xsession-errors";
+  flake.nixosModules.xdg = { pkgs, ... }: {
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      config.common.default = "*";
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+        gnome-keyring
+      ];
     };
 
-    home.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       xdg-utils
       xdg-ninja
     ];
-
-    xdg = {
-      enable = true;
-      portal = {
-        enable = true;
-        xdgOpenUsePortal = true;
-        config.common.default = "*";
-        extraPortals = [
-          pkgs.xdg-desktop-portal-hyprland
-          pkgs.xdg-desktop-portal-gtk
-        ];
-      };
-
-      cacheHome = config.home.homeDirectory + "/.local/cache";
-
-      userDirs = {
-        enable = true;
-        createDirectories = true;
-        setSessionVariables = true;
-        templates = null;
-        publicShare = null;
-        music = null;
-        pictures = null;
-        videos = null;
-        extraConfig = {
-          SCREENSHOTS = "${config.home.homeDirectory}/Medias/Screenshots";
-          DEV = "${config.home.homeDirectory}/Dev";
-          MEDIAS = "${config.home.homeDirectory}/Medias";
-        };
-      };
-    };
   };
 }
