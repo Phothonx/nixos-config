@@ -7,6 +7,11 @@
   }: {
     packages.niri = inputs.wrappers.wrappers.niri.wrap {
       inherit pkgs;
+
+      extraPackages = with pkgs; [
+        bibata-cursors
+      ];
+
       settings = {
         spawn-at-startup = [
           (lib.getExe self'.packages.noctalia)
@@ -38,12 +43,25 @@
           };
         };
 
+        cursor = {
+          xcursor-theme = "Bibata-Modern-Ice";
+          xcursor-size = 22;
+        };
+
+        window-rule = {
+          geometry-corner-radius = 12;
+          clip-to-geometry = true;
+        };
+
+        prefer-no-csd = _:{};
+
         binds = {
           "Mod+Shift+Slash".show-hotkey-overlay = {};
 
           "Mod+T".spawn-sh = lib.getExe self'.packages.kitty;
           "Mod+D".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call launcher toggle";
-          # "Super+Alt+L".spawn-sh = lib.getExe pkgs.swaylock;
+          "Super+Alt+L".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call lockScreen toggle";
+
 
           "Mod+Q".close-window = {};
 

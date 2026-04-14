@@ -13,6 +13,7 @@
     ];
 
     # TODO see corectrl
+    # TODO finish and see LACT
     # TODO ssh
 
     environment.systemPackages = with pkgs; [
@@ -40,12 +41,6 @@
       plugins = with pkgs; [
         obs-studio-plugins.wlrobs
       ];
-    };
-
-    services.logind = {
-      settings.Login = {
-        HandlePowerKey = "suspend";
-      };
     };
 
     boot = {

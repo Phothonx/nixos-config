@@ -17,7 +17,7 @@
 
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [(inputs.import-tree [./modules ./packages])];
+      imports = [(inputs.import-tree [./modules ./packages ./theme.nix])];
       systems = [
         # "aarch64-darwin"
         "aarch64-linux"

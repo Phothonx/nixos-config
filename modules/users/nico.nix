@@ -34,7 +34,7 @@
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
       then
         shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-        exec ${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.environment} $LOGIN_OPTION
+        exec ${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.shell} $LOGIN_OPTION
       fi
     '';
   };

@@ -1,6 +1,5 @@
 {
   flake.nixosModules.xkb = {...}: {
-    # TODO
     services.xserver.xkb = {
       layout = "nico"; # fr
       variant = "basic";

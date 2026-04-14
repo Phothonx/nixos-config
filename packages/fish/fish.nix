@@ -2,10 +2,12 @@
   perSystem = {
     pkgs,
     lib,
+    self',
     ...
   }: let
     fishConf = pkgs.writeText "wrapped-config.fish" ''
       set -g fish_color_option blue
+      set fish_greeting
 
       set -g fish_key_bindings fish_vi_key_bindings
       set -g fish_cursor_default block
@@ -22,13 +24,11 @@
       alias rm 'rm --interactive=once --verbose'
       alias mkdir 'mkdir --parents --verbose'
 
-      abbr -a -- nabucho 'nabuchodonausor'
-
       abbr -a -p anywhere -- -h --help
       abbr -a -- .. 'cd ..'
       abbr -a -- ... 'cd ../..'
       abbr -a -- .... 'cd ../../..'
-      abbr -a -- gs 'git status'
+
       abbr -a -- nf 'nix flake'
       abbr -a -- np 'nix profile'
       abbr -a -- nt 'nh os test'
@@ -43,6 +43,56 @@
       abbr -a -- ne 'echo $IN_NIX_SHELL'
       abbr -a --set-cursor npi 'nix profile add nixpkgs#%'
       abbr -a --set-cursor nsh 'nix shell nixpkgs#% --command fish'
+
+      abbr -a gs 'git status'
+      abbr -a gau 'git add --update'
+      abbr -a gf 'git fetch'
+      abbr -a gm 'git merge'
+      abbr -a gmt 'git mergetool'
+      abbr -a gc 'git commit'
+      abbr -a gaa 'git add --all'
+      abbr -a gpo 'git push --set-upstream origin'
+      abbr -a gl 'git log --oneline --all --graph'
+      abbr -a gb 'git branch'
+      abbr -a --set-cursor gcm 'git commit --message "%"'
+
+      abbr -a ps 'ps auxf'
+      abbr -a ping 'ping -c 10'
+      abbr -a less 'less -R'
+      abbr -a vi 'vim'
+      abbr -a svi 'sudo vi'
+      abbr -a nv 'nvim'
+
+      abbr -a mx 'chmod a+x'
+      abbr -a 000 'chmod -R 000'
+      abbr -a 644 'chmod -R 644'
+      abbr -a 666 'chmod -R 666'
+      abbr -a 755 'chmod -R 755'
+      abbr -a 777 'chmod -R 777'
+
+      abbr -a h 'history | grep '
+      abbr -a p 'ps aux | grep '
+      abbr -a f 'find . | grep '
+
+      abbr -a diskspace 'du -S | sort -n -r | more'
+      abbr -a folders 'du -h --max-depth=1'
+      abbr -a folderssort 'find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
+      abbr -a tree 'tree -CAhF --dirsfirst'
+      abbr -a treed 'tree -CAFd'
+      abbr -a mountedinfo 'df -hT'
+
+      abbr -a mktar 'tar -cvf'
+      abbr -a mkbz2 'tar -cvjf'
+      abbr -a mkgz 'tar -cvzf'
+      abbr -a untar 'tar -xvf'
+      abbr -a unbz2 'tar -xvjf'
+      abbr -a ungz 'tar -xvzf'
+
+      abbr -a sc 'sudo systemctl'
+      abbr -a jc 'sudo journalctl'
+      abbr -a scu 'systemctl --user'
+      abbr -a jcu 'journalctl --user'
+      abbr -a kys 'shutdown now'
 
       ${lib.getExe pkgs.zoxide} init fish | source
 
@@ -92,6 +142,7 @@
       end
     '';
   in {
+    # TODO solve completion missing
     packages.fish = inputs.wrappers.lib.wrapPackage {
       inherit pkgs;
 
@@ -100,8 +151,10 @@
         zoxide
         eza
         direnv
-        git
         nh
+
+        self'.packages.git
+        self'.packages.neovim
       ];
       flags = {
         "-C" = "source ${fishConf}";
