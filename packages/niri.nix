@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  self,
+  inputs,
+  ...
+}: {
   perSystem = {
     pkgs,
     lib,
@@ -12,7 +16,7 @@
         bibata-cursors
       ];
 
-      settings = {
+      settings = with self.theme; {
         spawn-at-startup = [
           (lib.getExe self'.packages.noctalia)
         ];
@@ -20,19 +24,20 @@
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
         input = {
-          warp-mouse-to-focus = _:{};
-          focus-follows-mouse = _:{};
+          warp-mouse-to-focus = _: {};
+          focus-follows-mouse = _: {};
 
           keyboard = {
+            # put custom kblayout here
             xkb.layout = "nico,us,fr";
             repeat-rate = 40;
             repeat-delay = 250;
           };
 
           touchpad = {
-            natural-scroll = _:{};
-            tap = _:{};
-            dwt = _:{};
+            natural-scroll = _: {};
+            tap = _: {};
+            dwt = _: {};
             scroll-factor = 0.8;
             accel-profile = "flat";
           };
@@ -45,7 +50,8 @@
 
         cursor = {
           xcursor-theme = "Bibata-Modern-Ice";
-          xcursor-size = 22;
+          xcursor-size = 24;
+          hide-after-inactive-ms = 1000000;
         };
 
         window-rule = {
@@ -53,7 +59,21 @@
           clip-to-geometry = true;
         };
 
-        prefer-no-csd = _:{};
+        layout = {
+          gaps = 7;
+          empty-workspace-above-first = _: {};
+
+          focus-ring = {
+            width = 2;
+            active-color = base16;
+          };
+
+          shadow = {
+            on = _: {};
+          };
+        };
+
+        prefer-no-csd = _: {};
 
         binds = {
           "Mod+Shift+Slash".show-hotkey-overlay = {};
@@ -62,20 +82,37 @@
           "Mod+D".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call launcher toggle";
           "Super+Alt+L".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call lockScreen toggle";
 
-
           "Mod+Q".close-window = {};
 
-
           "Mod+H".focus-column-left = {};
-          "Mod+J".focus-window-down = {};
-          "Mod+K".focus-window-up = {};
+          "Mod+J" = {
+            focus-window-down = {};
+            # fallback = { focus-workspace-down = {}; };
+          };
+
+          "Mod+K" = {
+            focus-window-up = {};
+            # fallback = { focus-workspace-up = {}; };
+          };
           "Mod+L".focus-column-right = {};
 
           "Mod+Left".focus-column-left = {};
-          "Mod+Down".focus-window-down = {};
-          "Mod+Up".focus-window-up = {};
+          "Mod+Down" = {
+            focus-window-down = {};
+            # fallback = { focus-workspace-down = {}; };
+          };
+
+          "Mod+Up" = {
+            focus-window-up = {};
+            # fallback = { focus-workspace-up = {}; };
+          };
           "Mod+Right".focus-column-right = {};
 
+          "Mod+U".focus-workspace-down = {};
+          "Mod+I".focus-workspace-up = {};
+
+          "Mod+Page_Down".focus-workspace-down = {};
+          "Mod+Page_Up".focus-workspace-up = {};
 
           "Mod+Ctrl+H".move-column-left = {};
           "Mod+Ctrl+J".move-window-down = {};
@@ -87,7 +124,6 @@
           "Mod+Ctrl+Up".move-window-up = {};
           "Mod+Ctrl+Right".move-column-right = {};
 
-
           "Mod+Shift+H".focus-monitor-left = {};
           "Mod+Shift+J".focus-monitor-down = {};
           "Mod+Shift+K".focus-monitor-up = {};
@@ -97,7 +133,6 @@
           "Mod+Shift+Down".focus-monitor-down = {};
           "Mod+Shift+Up".focus-monitor-up = {};
           "Mod+Shift+Right".focus-monitor-right = {};
-
 
           "Mod+Ctrl+Shift+H".move-column-to-monitor-left = {};
           "Mod+Ctrl+Shift+J".move-column-to-monitor-down = {};
@@ -109,27 +144,17 @@
           "Mod+Ctrl+Shift+Up".move-column-to-monitor-up = {};
           "Mod+Ctrl+Shift+Right".move-column-to-monitor-right = {};
 
-
-          "Mod+U".focus-workspace-down = {};
-          "Mod+I".focus-workspace-up = {};
-
-          "Mod+Page_Down".focus-workspace-down = {};
-          "Mod+Page_Up".focus-workspace-up = {};
-
-
           "Mod+Ctrl+U".move-column-to-workspace-down = {};
           "Mod+Ctrl+I".move-column-to-workspace-up = {};
 
           "Mod+Ctrl+Page_Down".move-column-to-workspace-down = {};
           "Mod+Ctrl+Page_Up".move-column-to-workspace-up = {};
 
-
           "Mod+Shift+U".move-workspace-down = {};
           "Mod+Shift+I".move-workspace-up = {};
 
           "Mod+Shift+Page_Down".move-workspace-down = {};
           "Mod+Shift+Page_Up".move-workspace-up = {};
-
 
           "Mod+Comma".consume-window-into-column = {};
           "Mod+Period".expel-window-from-column = {};

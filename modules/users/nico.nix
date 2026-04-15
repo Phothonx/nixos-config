@@ -30,6 +30,9 @@
     };
 
     # https://wiki.nixos.org/wiki/Fish
+    programs.fish.enable = true;
+    programs.fish.package = self.packages.${pkgs.stdenv.hostPlatform.system}.fish;
+
     programs.bash.interactiveShellInit = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
       then

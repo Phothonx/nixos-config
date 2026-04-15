@@ -1,5 +1,5 @@
 {...}: {
-  flake.nixosModules.xdg = { pkgs, ... }: {
+  flake.nixosModules.xdg = {pkgs, ...}: {
     xdg.portal = {
       enable = true;
       xdgOpenUsePortal = true;

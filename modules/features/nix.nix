@@ -11,9 +11,10 @@
 
     programs.direnv = {
       enable = true;
-      silent = false;
-      loadInNixShell = true;
-      direnvrcExtra = "";
+      silent = true;
+      direnvrcExtra = ''
+        echo "loaded direnv!"
+      '';
       nix-direnv.enable = true;
     };
 
