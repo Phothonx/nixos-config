@@ -11,7 +11,7 @@
         papirus-icon-theme
       ];
 
-      # settings = (builtins.fromJSON (builtins.readFile ./noctalia.json)).settings;
+      settings = (builtins.fromJSON (builtins.readFile ./noctalia.json)).settings;
     };
   };
 }
