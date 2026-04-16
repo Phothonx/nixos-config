@@ -75,12 +75,14 @@
 
         prefer-no-csd = _: {};
 
-        binds = {
+        binds = let
+          call = "${lib.getExe self'.packages.noctalia} ipc call";
+        in {
           "Mod+Shift+Slash".show-hotkey-overlay = {};
 
           "Mod+T".spawn-sh = lib.getExe self'.packages.kitty;
-          "Mod+D".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call launcher toggle";
-          "Super+Alt+L".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call lockScreen toggle";
+          "Mod+Space".spawn-sh = "${call} launcher toggle";
+          "Super+Alt+Delete".spawn-sh = "${call} sessionMenu toggle";
 
           "Mod+Q".close-window = {};
 
@@ -186,6 +188,14 @@
 
           "Mod+Shift+E".quit = {};
           "Ctrl+Alt+Delete".quit = {};
+
+          "XF86AudioMute".spawn-sh = "${call} volume muteOutput";
+          "XF86AudioRaiseVolume".spawn-sh = "${call} volume increase";
+          "XF86AudioLowerVolume".spawn-sh = "${call} volume decrease";
+          "XF86AudioMicMute".spawn-sh = "${call} volume muteInput";
+          "XF86MonBrightnessDown".spawn-sh = "${call} brightness decrease";
+          "XF86MonBrightnessUp".spawn-sh = "${call} brightness decrease";
+          "Mod+S".spawn-sh = "${call} controlCenter toggle";
         };
       };
     };
