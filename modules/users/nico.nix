@@ -6,15 +6,14 @@
     ...
   }: {
     imports = [
-      self.nixosModules.sops
+      self.nixosModules.agenix
     ];
 
     users.mutableUsers = false;
-    sops.secrets."user_passwords/nico" = {neededForUsers = true;};
+
     users.users.nico = {
       shell = pkgs.bashInteractive;
-      hashedPasswordFile = config.sops.secrets."user_passwords/nico".path;
-      # initialPassword = "12345";
+      hashedPasswordFile = config.age.secrets.psswd_nico.path;
       isNormalUser = true;
       group = "users";
       extraGroups = [

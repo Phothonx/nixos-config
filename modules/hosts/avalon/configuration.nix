@@ -7,7 +7,7 @@
       self.nixosModules.power
       self.nixosModules.nh
       self.nixosModules.desktop
-      self.nixosModules.sops
+      self.nixosModules.agenix
 
       self.nixosModules.nico
     ];
