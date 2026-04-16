@@ -40,6 +40,7 @@
             dwt = _: {};
             scroll-factor = 0.8;
             accel-profile = "flat";
+            disabled-on-external-mouse = _:{};
           };
 
           mouse = {
@@ -47,6 +48,8 @@
             accel-profile = "flat";
           };
         };
+
+        clipboard.disable-primary = _:{};
 
         cursor = {
           xcursor-theme = "Bibata-Modern-Ice";
