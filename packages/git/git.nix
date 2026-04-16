@@ -4,9 +4,7 @@
     self',
     ...
   }: let
-    gitIgnore = pkgs.writeText "git-ignore" (builtins.readFile ./ignore);
-
-    gitConfig = pkgs.writeText "gitconfig" ''
+    gitConfig = ''
       [init]
         defaultBranch = main
 
@@ -16,7 +14,7 @@
       [core]
         editor = nvim
         hooksPath = .githooks
-        excludesFile = ${gitIgnore}
+        excludesFile = ${./ignore}
 
       [merge]
         tool = nvimdiff
@@ -55,7 +53,7 @@
         self'.packages.neovim
       ];
 
-      configFile.content = builtins.readFile gitConfig;
+      configFile.content = gitConfig;
     };
   };
 }

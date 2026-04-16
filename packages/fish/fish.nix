@@ -142,7 +142,6 @@
       end
     '';
   in {
-    # TODO solve completion missing
     packages.fish = inputs.wrappers.lib.wrapPackage {
       inherit pkgs;
 
