@@ -6,8 +6,8 @@
 {...}: {
   perSystem = {pkgs, ...}: {
     packages.firefox = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-      extraPoliciesFiles = [ (pkgs.writeText "custom-policies.json" (builtins.readFile ./policies.json)) ];
-      extraPrefsFiles = [ (pkgs.writeText "custom-prefs.js" (builtins.readFile ./user.js)) ];
+      extraPoliciesFiles = [(pkgs.writeText "custom-policies.json" (builtins.readFile ./policies.json))];
+      extraPrefsFiles = [(pkgs.writeText "custom-prefs.js" (builtins.readFile ./user.js))];
     };
   };
 }
