@@ -85,7 +85,8 @@
 
           "Mod+T".spawn-sh = lib.getExe self'.packages.kitty;
           "Mod+Space".spawn-sh = "${call} launcher toggle";
-          "Super+Alt+Delete".spawn-sh = "${call} sessionMenu toggle";
+          "Ctrl+Alt+Delete".spawn-sh = "${call} sessionMenu toggle";
+          "Ctrl+Alt+L".spawn-sh = "${call} lockScreen lock";
 
           "Mod+Q".close-window = {};
 
@@ -189,15 +190,14 @@
           "Alt+Print".screenshot-window = {};
           "Ctrl+Print".screenshot-screen = {};
 
-          "Mod+Shift+E".quit = {};
-          "Ctrl+Alt+Delete".quit = {};
+          "Mod+Shift+Delete".quit = {};
 
           "XF86AudioMute".spawn-sh = "${call} volume muteOutput";
           "XF86AudioRaiseVolume".spawn-sh = "${call} volume increase";
           "XF86AudioLowerVolume".spawn-sh = "${call} volume decrease";
           "XF86AudioMicMute".spawn-sh = "${call} volume muteInput";
           "XF86MonBrightnessDown".spawn-sh = "${call} brightness decrease";
-          "XF86MonBrightnessUp".spawn-sh = "${call} brightness decrease";
+          "XF86MonBrightnessUp".spawn-sh = "${call} brightness increase";
           "Mod+S".spawn-sh = "${call} controlCenter toggle";
         };
       };

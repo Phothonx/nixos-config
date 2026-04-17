@@ -8,13 +8,13 @@
       self.nixosModules.nh
       self.nixosModules.desktop
       self.nixosModules.agenix
+      self.nixosModules.gaming
 
       self.nixosModules.nico
     ];
 
     # TODO see corectrl
     # TODO finish and see LACT
-    # TODO ssh
 
     environment.systemPackages = with pkgs; [
       mission-planner

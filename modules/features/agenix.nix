@@ -12,6 +12,7 @@
       "/etc/ssh/ssh_host_ed25519_key"
     ];
 
+    # TODO git configs
     age.secrets = {
       github_config.file = ../../secrets/github_config.age;
       thor_config.file = ../../secrets/thor_config.age;
