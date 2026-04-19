@@ -59,6 +59,8 @@
 
           mark2html
 
+          zathura
+
           biber
           pstree
           xdotool

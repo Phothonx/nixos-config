@@ -17,14 +17,6 @@
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
     };
 
-    services.greetd = {
-      enable = true;
-      settings.default_session = {
-        command = "${self.packages.${pkgs.stdenv.hostPlatform.system}.niri}/bin/niri-session";
-        user = "nico";
-      };
-    };
-
     services.udisks2.enable = true; # nautilus
     services.gvfs.enable = true; # nautilus
     environment.systemPackages = [

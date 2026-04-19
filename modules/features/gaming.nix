@@ -28,18 +28,19 @@
       # atlauncher
       # prismlauncher
 
-      # TODO albion
-      # (pkgs.buildFHSEnv pkgs.appimageTools.defaultFhsEnvArgs // {
-      #   name = "fhs-albion";
-      #   targetPkgs = pkgs:
-      #     with pkgs; [
-      #       krb5
-      #       libxau
-      #       libxdmcp
-      #     ];
-      #   profile = ''export FHS=1'';
-      #   runScript = "fish";
-      # })
+      (pkgs.buildFHSEnv (pkgs.appimageTools.defaultFhsEnvArgs // {
+        name = "fhs-albion";
+        targetPkgs = pkgs:
+          (pkgs.appimageTools.defaultFhsEnvArgs.targetPkgs pkgs)
+          ++ (with pkgs; [
+            krb5
+            libxau
+            libxdmcp
+          ]);
+
+        profile = ''export FHS=1'';
+        runScript = "fish";
+      }))
 
     ];
 

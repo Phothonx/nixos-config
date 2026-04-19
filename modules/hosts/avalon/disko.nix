@@ -1,0 +1,88 @@
+{
+  # TODO finish
+  flake.diskoConfigurations.avalon = {
+    disko.devices = {
+      disk.main = {
+        type = "disk";
+        device = "/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b4ae096ee";
+        content = {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              size = "1G";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+                mountOptions = [ "umask=0077" ];
+              };
+            };
+            luks = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "cryptroot";
+                # disable settings.keyFile if you want to use interactive password entry
+                #passwordFile = "/tmp/secret.key"; # Interactive
+                  # settings.keyFile = "/tmp/secret.key";
+                # additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
+                settings.allowDiscards = true;
+                content = {
+                  type = "btrfs";
+                  extraArgs = ["-L" "nixos" "-f"];
+                  subvolumes = {
+                    "/root" = {
+                      mountpoint = "/";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                        "subvol=root"
+                      ];
+                    };
+                    "/home" = {
+                      mountpoint = "/home";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                        "subvol=home"
+                      ];
+                    };
+                    "/nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                        "subvol=nix"
+                      ];
+                    };
+                    "/persist" = {
+                      mountpoint = "/persist";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                        "subvol=persist"
+                      ];
+                    };
+                    "/log" = {
+                      mountpoint = "/var/log";
+                      mountOptions = [
+                        "compress=zstd"
+                        "noatime"
+                        "subvol=log"
+                      ];
+                    };
+                    "/swap" = {
+                      mountpoint = "/swap";
+                      swap.swapfile.size = "24G";
+                    };
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
+}

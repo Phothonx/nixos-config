@@ -34,6 +34,7 @@
       pavucontrol
       crosspipe
       wl-clipboard
+      via
     ];
 
     programs.obs-studio = {
@@ -43,15 +44,21 @@
       ];
     };
 
+    services.greetd = {
+      enable = true;
+      settings.default_session = {
+        command = "${self.packages.${pkgs.stdenv.hostPlatform.system}.niri}/bin/niri-session";
+        user = "nico";
+      };
+    };
+
     boot = {
       # to detect mouse & keybr at startup
       initrd.availableKernelModules = ["hid_cherry"];
 
       tmp.cleanOnBoot = true;
       loader = {
-        systemd-boot = {
-          enable = true;
-        };
+        systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
       };
     };
@@ -75,6 +82,7 @@
     };
 
     services.udev = {
+      # mouse, keyboard, drone
       extraRules = ''
         KERNEL=="hidraw*", ATTRS{idVendor}=="3554", ATTRS{idProduct}=="f58c", MODE="0666", TAG+="uaccess"
         KERNEL=="hidraw*", ATTRS{idVendor}=="3554", ATTRS{idProduct}=="f58a", MODE="0666", TAG+="uaccess"

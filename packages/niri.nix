@@ -44,7 +44,7 @@
           };
 
           mouse = {
-            accel-speed = 0.1;
+            accel-speed = -0.43;
             accel-profile = "flat";
           };
         };
