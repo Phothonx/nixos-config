@@ -26,6 +26,7 @@
 
     nix = {
       settings.experimental-features = ["nix-command" "flakes"];
+      settings.auto-optimise-store = true;
       registry.self.flake = self;
       channel.enable = false;
     };

@@ -48,7 +48,7 @@
           args = {
             "node.description" = "Parametric EQ for fiio ft1 pro";
             "media.name" = "Parametric EQ for fiio ft1 pro";
-            "equalizer.filepath" = ./pipewire/fiio-ft1-pro-parametric-eq.txt;
+            "equalizer.filepath" = ./fiio-ft1-pro-parametric-eq.txt;
             "audio.channels" = 2;
             "audio.position" = ["FL" "FR"];
             "capture.props" = {

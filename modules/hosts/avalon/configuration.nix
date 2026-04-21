@@ -7,7 +7,6 @@
       self.nixosModules.power
       self.nixosModules.nh
       self.nixosModules.desktop
-      self.nixosModules.agenix
       self.nixosModules.gaming
 
       self.nixosModules.nico
@@ -16,7 +15,12 @@
     # TODO see corectrl
     # TODO finish and see LACT
 
+    documentation.dev.enable = true;
+
     environment.systemPackages = with pkgs; [
+      man-pages
+      man-pages-posix
+      tldr
       mission-planner
       # kdePackages.kdenlive
       evemu

@@ -14,6 +14,7 @@
 
       extraPackages = with pkgs; [
         bibata-cursors
+        wev
       ];
 
       settings = with self.theme; {

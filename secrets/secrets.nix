@@ -10,6 +10,8 @@ in {
   "github_config.age".publicKeys = recovery ++ users ++ systems;
   "thor_config.age".publicKeys = recovery ++ users ++ systems;
 
+  "ssh_config.age".publicKeys = recovery ++ users ++ systems;
+
   "psswd_nico.age".publicKeys = recovery ++ users ++ systems;
 
   "id_ed25519_enseirb.age".publicKeys = recovery ++ users ++ systems;

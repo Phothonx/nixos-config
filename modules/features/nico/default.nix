@@ -5,10 +5,6 @@
     lib,
     ...
   }: {
-    imports = [
-      self.nixosModules.agenix
-    ];
-
     users.mutableUsers = false;
 
     users.users.nico = {

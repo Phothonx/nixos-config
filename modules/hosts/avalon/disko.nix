@@ -1,5 +1,4 @@
 {
-  # TODO finish
   flake.diskoConfigurations.avalon = {
     disko.devices = {
       disk.main = {
@@ -62,14 +61,6 @@
                         "compress=zstd"
                         "noatime"
                         "subvol=persist"
-                      ];
-                    };
-                    "/log" = {
-                      mountpoint = "/var/log";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                        "subvol=log"
                       ];
                     };
                     "/swap" = {
