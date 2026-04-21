@@ -77,6 +77,17 @@
           };
         };
 
+        gestures = {
+          hot-corners = {
+            off = _:{};
+          };
+        };
+
+        # layer-rule = {
+        #   match.namespace = "^noctalia-overview*";
+        #   place-within-backdrop = true;
+        # };
+
         prefer-no-csd = _: {};
 
         binds = let
@@ -88,6 +99,8 @@
           "Mod+Space".spawn-sh = "${call} launcher toggle";
           "Ctrl+Alt+Delete".spawn-sh = "${call} sessionMenu toggle";
           "Ctrl+Alt+L".spawn-sh = "${call} lockScreen lock";
+
+          "Mod+Tab".toggle-overview = {};
 
           "Mod+Q".close-window = {};
 

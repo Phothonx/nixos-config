@@ -14,31 +14,45 @@
       extraConfig.pipewire = {
 
         "99-input-denoising"."context.modules" = [{
-          "name" = "libpipewire-module-filter-chain";
-          "args" = {
-            "node.description" = "DeepFilter Noise Cancelling Source";
-            "media.name" = "DeepFilter Noise Cancelling Source";
+          name = "libpipewire-module-filter-chain";
+          args = {
+            "node.description" = "Noise Treatment source";
             "filter.graph" = {
-              "nodes" = [
+              nodes = [
                 {
-                  "type" = "ladspa";
-                  "name" = "DeepFilter Mono";
-                  "plugin" = "${pkgs.deepfilternet}/lib/ladspa/libdeep_filter_ladspa.so";
-                  "label" = "deep_filter_mono";
-                  # "control" = {
-                  #   "Attenuation Limit (dB)" = cfg.source.attenuation;
-                  # };
+                  type = "ladspa";
+                  name = "rnnoise";
+                  plugin = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+                  label = "noise_suppressor_mono";
+                  control = {
+                    "VAD Threshold (%)" = 85.0;
+                    "VAD Grace Period (ms)" = 100;
+                    "Retroactive VAD Grace (ms)" = 0;
+                  };
+                }
+                {
+                  type = "builtin";
+                  name = "micgain";
+                  label = "linear";
+                  control = {
+                    "Mult" = 2;
+                    "Add" = 0.0;
+                  };
                 }
               ];
             };
-            "audio.rate" = 48000;
+            links = [{ output = "rnnoise:Out"; input = "micgain:In"; }];
+            inputs = [ "rnnoise:In" ];
+            outputs = [ "micgain:Out" ];
             "capture.props" = {
-              "node.name" = "deep_filter_mono_input";
+              "node.name" = "RNNoise Canceling source input";
               "node.passive" = true;
+              "audio.rate" = 48000;
             };
             "playback.props" = {
-              "node.name" = "deep_filter_mono_output";
+              "node.name" = "RNNoise Canceling source output";
               "media.class" = "Audio/Source";
+              "audio.rate" = 48000;
             };
           };
         }];
@@ -47,24 +61,20 @@
           name = "libpipewire-module-parametric-equalizer";
           args = {
             "node.description" = "Parametric EQ for fiio ft1 pro";
-            "media.name" = "Parametric EQ for fiio ft1 pro";
             "equalizer.filepath" = ./fiio-ft1-pro-parametric-eq.txt;
-            "audio.channels" = 2;
-            "audio.position" = ["FL" "FR"];
             "capture.props" = {
-              "node.name" = "parametric-eq-input-fiio-ft1-pro";
-              "node.description" = "Parametric EQ Input for fiio ft1 pro";
-              "audio.channels" = 2;
-              "audio.position" = ["FL" "FR"];
+              "node.name" = "eq_input.fiio_ft1_pro";
               "media.class" = "Audio/Sink";
-            };
-            "audio.rate" = 48000;
-            "playback.props" = {
-              "node.name" = "parametric-eq-output-fiio-ft1-pro";
-              "node.description" = "Parametric EQ Output for fiio ft1 pro";
               "audio.channels" = 2;
               "audio.position" = ["FL" "FR"];
+              "audio.rate" = 48000;
+            };
+            "playback.props" = {
+              "node.name" = "eq_output.fiio_ft1_pro";
               "node.passive" = true;
+              "audio.channels" = 2;
+              "audio.position" = ["FL" "FR"];
+              "audio.rate" = 48000;
             };
           };
         }];

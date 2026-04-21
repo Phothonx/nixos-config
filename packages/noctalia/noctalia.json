@@ -12,7 +12,7 @@
     "widgetSpacing": 10,
     "contentPadding": 10,
     "fontScale": 1,
-    "enableExclusionZoneInset": false,
+    "enableExclusionZoneInset": true,
     "backgroundOpacity": 0.93,
     "useSeparateOpacity": false,
     "marginVertical": 4,
@@ -114,6 +114,13 @@
         }
       ],
       "right": [
+        {
+          "displayMode": "forceOpen",
+          "iconColor": "none",
+          "id": "KeyboardLayout",
+          "showIcon": true,
+          "textColor": "none"
+        },
         {
           "blacklist": [],
           "chevronColor": "none",
@@ -254,7 +261,7 @@
     "tooltipsEnabled": false,
     "scrollbarAlwaysVisible": false,
     "boxBorderEnabled": false,
-    "panelBackgroundOpacity": 0.5,
+    "panelBackgroundOpacity": 1,
     "translucentWidgets": false,
     "panelsAttachedToBar": true,
     "settingsPanelMode": "attached",
@@ -294,7 +301,7 @@
   },
   "wallpaper": {
     "enabled": true,
-    "overviewEnabled": false,
+    "overviewEnabled": true,
     "directory": "/home/nico/nixos-config/wallpapers",
     "monitorDirectories": [],
     "enableMultiMonitorDirectories": false,
@@ -639,7 +646,7 @@
   },
   "nightLight": {
     "enabled": true,
-    "forced": true,
+    "forced": false,
     "autoSchedule": true,
     "nightTemp": "4000",
     "dayTemp": "6500",
