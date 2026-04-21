@@ -81,9 +81,9 @@
       env = {
         EDITOR = lib.getExe self'.packages.neovim;
         VISUAL = lib.getExe self'.packages.neovim;
-        PAGER = "less -R";
+        PAGER = "less";
         FZF_DEFAULT_COMMAND = "fd --type f";
-        LESS = "-R";
+        LESS = "-FRX";
       };
     };
   };

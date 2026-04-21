@@ -5,6 +5,10 @@
     lib,
     ...
   }: {
+    imports = [
+      # self.nixosModules.impermanence
+    ];
+
     users.mutableUsers = false;
 
     users.users.nico = {
@@ -35,5 +39,32 @@
         exec ${lib.getExe self.packages.${pkgs.stdenv.hostPlatform.system}.shell} $LOGIN_OPTION
       fi
     '';
+
+    # environment.persistence."/persist".users.nico = {
+    #   directories = [
+    #     "Downloads"
+    #     "Music"
+    #     "Pictures"
+    #     "Documents"
+    #     "Videos"
+    #     "nixos-config"
+    #     { directory = ".ssh"; mode = "0700"; }
+    #     ".local/state/wireplumber"
+    #     ".local/share/direnv"
+    #
+    #     ".cache/mozilla"
+    #     ".config/vesktop"
+    #     ".local/share/Steam"
+    #     ".config/obs-studio"
+    #
+    #     ".local/share/zoxide"
+    #     ".local/share/direnv"
+    #     ".local/share/nvim"
+    #     ".local/share/fish"
+    #     ".config/nvim"
+    #   ];
+    #   files = [
+    #   ];
+    # };
   };
 }

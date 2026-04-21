@@ -1,7 +1,7 @@
 {
   flake.nixosModules.xkb = {...}: {
     services.xserver.xkb = {
-      layout = "nico"; # fr
+      layout = "ni"; # fr
       variant = "basic";
       options = "caps:escape";
       extraLayouts = {
