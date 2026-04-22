@@ -55,6 +55,9 @@
     #     ".cache/mozilla"
     #     ".config/vesktop"
     #     ".local/share/Steam"
+    #     ".local/share/osu"
+    #     ".local/share/albiononline"
+    #     ".local/share/applications"
     #     ".config/obs-studio"
     #
     #     ".local/share/zoxide"

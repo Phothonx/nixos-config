@@ -45,12 +45,12 @@
             inputs = [ "rnnoise:In" ];
             outputs = [ "micgain:Out" ];
             "capture.props" = {
-              "node.name" = "RNNoise Canceling source input";
+              "node.name" = "capture.rnnoise_source";
               "node.passive" = true;
               "audio.rate" = 48000;
             };
             "playback.props" = {
-              "node.name" = "RNNoise Canceling source output";
+              "node.name" = "rnnoise_source";
               "media.class" = "Audio/Source";
               "audio.rate" = 48000;
             };

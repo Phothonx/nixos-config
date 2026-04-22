@@ -2,6 +2,7 @@
   flake.nixosModules.avalonConfiguration = {pkgs, ...}: {
     imports = [
       self.nixosModules.avalonHardware
+      # self.nixosModules.impermanence
 
       self.nixosModules.nix
       self.nixosModules.power
@@ -12,8 +13,7 @@
       self.nixosModules.nico
     ];
 
-    # TODO see corectrl
-    # TODO finish and see LACT
+    # programs.lact.enable = true;
 
     documentation.dev.enable = true;
 

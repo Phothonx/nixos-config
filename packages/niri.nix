@@ -83,10 +83,12 @@
           };
         };
 
-        # layer-rule = {
-        #   match.namespace = "^noctalia-overview*";
-        #   place-within-backdrop = true;
-        # };
+        layer-rules = [
+          {
+            matches = [{namespace = "^noctalia-overview*";}];
+            place-within-backdrop = true;
+          }
+        ];
 
         prefer-no-csd = _: {};
 
@@ -106,25 +108,21 @@
 
           "Mod+H".focus-column-left = {};
           "Mod+J" = {
-            focus-window-down = {};
-            # fallback = { focus-workspace-down = {}; };
+            focus-workspace-down = {};
           };
 
           "Mod+K" = {
-            focus-window-up = {};
-            # fallback = { focus-workspace-up = {}; };
+            focus-workspace-up = {};
           };
           "Mod+L".focus-column-right = {};
 
           "Mod+Left".focus-column-left = {};
           "Mod+Down" = {
-            focus-window-down = {};
-            # fallback = { focus-workspace-down = {}; };
+            focus-workspace-down = {};
           };
 
           "Mod+Up" = {
-            focus-window-up = {};
-            # fallback = { focus-workspace-up = {}; };
+            focus-workspace-up = {};
           };
           "Mod+Right".focus-column-right = {};
 
