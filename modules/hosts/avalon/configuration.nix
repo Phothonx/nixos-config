@@ -1,8 +1,12 @@
-{self, ...}: {
+{inputs, self, ...}: {
   flake.nixosModules.avalonConfiguration = {pkgs, ...}: {
     imports = [
       self.nixosModules.avalonHardware
-      # self.nixosModules.impermanence
+
+      self.nixosModules.impermanence
+
+      self.diskoConfigurations.avalon
+      inputs.disko.nixosModules.disko
 
       self.nixosModules.nix
       self.nixosModules.power

@@ -1,5 +1,6 @@
 {
   flake.diskoConfigurations.avalon = {
+
     disko.devices = {
       disk.main = {
         type = "disk";
