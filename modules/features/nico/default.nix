@@ -47,8 +47,9 @@
         "Pictures"
         "Documents"
         "Videos"
-
         "nixos-config"
+
+        { directory = ".ssh"; mode = "0700"; }
 
         ".cache/fish"
         ".cache/mozilla"
@@ -63,6 +64,7 @@
         ".local/share/nvim"
         ".local/share/fish"
 
+        ".config/mozilla"
         ".config/heroic"
         ".config/chromium"
         ".config/nvim"
@@ -72,9 +74,7 @@
         ".config/spotify"
         ".config/vesktop"
         ".config/localsend"
-
-        { directory = ".ssh"; mode = "0700"; }
-        ".mozilla"
+        ".config/unity3d"
       ];
       files = [
       ];
