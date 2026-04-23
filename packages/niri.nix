@@ -107,27 +107,14 @@
           "Mod+Q".close-window = {};
 
           "Mod+H".focus-column-left = {};
-          "Mod+J" = {
-            focus-workspace-down = {};
-          };
-
-          "Mod+K" = {
-            focus-workspace-up = {};
-          };
+          "Mod+J".focus-workspace-down = {};
+          "Mod+K".focus-workspace-up = {};
           "Mod+L".focus-column-right = {};
 
           "Mod+Left".focus-column-left = {};
-          "Mod+Down" = {
-            focus-workspace-down = {};
-          };
-
-          "Mod+Up" = {
-            focus-workspace-up = {};
-          };
+          "Mod+Down".focus-workspace-down = {};
+          "Mod+Up".focus-workspace-up = {};
           "Mod+Right".focus-column-right = {};
-
-          "Mod+U".focus-workspace-down = {};
-          "Mod+I".focus-workspace-up = {};
 
           "Mod+Page_Down".focus-workspace-down = {};
           "Mod+Page_Up".focus-workspace-up = {};
@@ -201,6 +188,8 @@
           "Print".screenshot = {};
           "Alt+Print".screenshot-window = {};
           "Ctrl+Print".screenshot-screen = {};
+          "Mod+Shift+S".screenshot-window = {};
+          "Mod+S".screenshot-screen = {};
 
           "Mod+Shift+Delete".quit = {};
 
@@ -210,7 +199,7 @@
           "XF86AudioMicMute".spawn-sh = "${call} volume muteInput";
           "XF86MonBrightnessDown".spawn-sh = "${call} brightness decrease";
           "XF86MonBrightnessUp".spawn-sh = "${call} brightness increase";
-          "Mod+S".spawn-sh = "${call} controlCenter toggle";
+          "Mod+P".spawn-sh = "${call} controlCenter toggle";
         };
       };
     };

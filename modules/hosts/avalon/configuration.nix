@@ -30,7 +30,6 @@
       # kdePackages.kdenlive
       evemu
       celluloid
-      vlc
       loupe
       imv
       bitwarden-desktop
@@ -44,6 +43,7 @@
       crosspipe
       wl-clipboard
       via
+      qmk-udev-rules # for via
     ];
 
     programs.obs-studio = {

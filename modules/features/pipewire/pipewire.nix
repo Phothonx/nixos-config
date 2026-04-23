@@ -2,6 +2,7 @@
   flake.nixosModules.pipewire = {pkgs, ...}: {
     security.rtkit.enable = true;
     services.pulseaudio.enable = false;
+    # holy grail: nix shell nixpkgs#ladspa-sdk nixpkgs#rnnoise-plugin -c analyseplugin $(nix eval --raw nixpkgs#rnnoise-plugin.outPath)/lib/ladspa/librnnoise_ladspa.so
 
     services.pipewire = {
       enable = true;
@@ -26,7 +27,7 @@
                   label = "noise_suppressor_mono";
                   control = {
                     "VAD Threshold (%)" = 85.0;
-                    "VAD Grace Period (ms)" = 100;
+                    "VAD Grace Period (ms)" = 200;
                     "Retroactive VAD Grace (ms)" = 0;
                   };
                 }
@@ -40,9 +41,9 @@
                   };
                 }
               ];
+              links = [{ output = "rnnoise:Output"; input = "micgain:In"; }];
             };
-            links = [{ output = "rnnoise:Out"; input = "micgain:In"; }];
-            inputs = [ "rnnoise:In" ];
+            inputs = [ "rnnoise:Input" ];
             outputs = [ "micgain:Out" ];
             "capture.props" = {
               "node.name" = "capture.rnnoise_source";
