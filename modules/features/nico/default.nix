@@ -53,6 +53,7 @@
 
         ".cache/fish"
         ".cache/mozilla"
+        ".cache/noctalia"
 
         ".local/state/wireplumber"
         ".local/share/Steam"
@@ -65,6 +66,7 @@
         ".local/share/fish"
 
         ".config/mozilla"
+        ".config/mozilla/firefox"
         ".config/heroic"
         ".config/chromium"
         ".config/nvim"
