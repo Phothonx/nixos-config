@@ -7,7 +7,7 @@
       self.packages.${pkgs.stdenv.hostPlatform.system}.git
     ];
 
-    age.identityPaths = [ "/home/nico/.ssh/id_ed25519" ];
+    age.identityPaths = [ "/persist/home/nico/.ssh/id_ed25519" ];
 
     age.secrets = {
       psswd_nico.file = ../../../secrets/psswd_nico.age;

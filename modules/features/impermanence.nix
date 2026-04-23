@@ -18,6 +18,7 @@
         "/var/lib/systemd/coredump"
         "/etc/NetworkManager/system-connections"
         "/var/lib/NetworkManager"
+        "/etc/ssh"
       ];
       files = [
         "/etc/machine-id"
@@ -70,7 +71,6 @@
   };
 
   fileSystems."/persist".neededForBoot = true;
-  fileSystems."/home".neededForBoot = true;
 
   };
 }

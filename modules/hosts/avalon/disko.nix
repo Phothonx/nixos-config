@@ -23,10 +23,6 @@
               content = {
                 type = "luks";
                 name = "cryptroot";
-                # disable settings.keyFile if you want to use interactive password entry
-                #passwordFile = "/tmp/secret.key"; # Interactive
-                  # settings.keyFile = "/tmp/secret.key";
-                # additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
                 settings.allowDiscards = true;
                 content = {
                   type = "btrfs";
@@ -38,14 +34,6 @@
                         "compress=zstd"
                         "noatime"
                         "subvol=root"
-                      ];
-                    };
-                    "/home" = {
-                      mountpoint = "/home";
-                      mountOptions = [
-                        "compress=zstd"
-                        "noatime"
-                        "subvol=home"
                       ];
                     };
                     "/nix" = {

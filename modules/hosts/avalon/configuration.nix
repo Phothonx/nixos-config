@@ -19,6 +19,7 @@
 
     # programs.lact.enable = true;
 
+    documentation.man.cache.enable = true;
     documentation.dev.enable = true;
 
     environment.systemPackages = with pkgs; [
@@ -107,6 +108,6 @@
     };
 
     # === DO NOT TOUCH ! ===
-    system.stateVersion = "23.11";
+    system.stateVersion = "25.11";
   };
 }

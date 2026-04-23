@@ -10,8 +10,8 @@
 
     users.users.nico = {
       shell = pkgs.bashInteractive;
-      # hashedPasswordFile = config.age.secrets.psswd_nico.path;
-      initialPassword = "12345";
+      hashedPasswordFile = config.age.secrets.psswd_nico.path;
+      # initialPassword = "12345";
       isNormalUser = true;
       group = "users";
       extraGroups = [
@@ -42,30 +42,39 @@
       directories = [
         "Downloads"
         "Music"
+        "Dev"
+        "Desktop"
         "Pictures"
         "Documents"
         "Videos"
-        "nixos-config"
-        { directory = ".ssh"; mode = "0700"; }
-        ".local/state/wireplumber"
 
-        ".config/vesktop"
+        "nixos-config"
+
+        ".cache/fish"
+        ".cache/mozilla"
+
+        ".local/state/wireplumber"
         ".local/share/Steam"
         ".local/share/osu"
         ".local/share/albiononline"
         ".local/share/applications"
-        ".config/obs-studio"
-
         ".local/share/zoxide"
         ".local/share/direnv"
         ".local/share/nvim"
         ".local/share/fish"
+
+        ".config/heroic"
+        ".config/chromium"
         ".config/nvim"
-        ".mozilla"
+        ".config/obs-studio"
         ".config/discord"
         ".config/Bitwarden"
         ".config/spotify"
+        ".config/vesktop"
         ".config/localsend"
+
+        { directory = ".ssh"; mode = "0700"; }
+        ".mozilla"
       ];
       files = [
       ];
