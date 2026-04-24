@@ -5,7 +5,7 @@
       clean.enable = true;
       clean.extraArgs = "--keep-since 1w --keep 5";
       clean.dates = "weekly";
-      flake = "$HOME/nixos-config";
+      flake = "$HOME/nix-config";
     };
   };
 }

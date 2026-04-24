@@ -13,9 +13,7 @@
     programs.direnv = {
       enable = true;
       silent = true;
-      direnvrcExtra = ''
-        echo "loaded direnv!"
-      '';
+      direnvrcExtra = '''';
       nix-direnv.enable = true;
     };
 

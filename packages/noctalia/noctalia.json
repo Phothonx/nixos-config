@@ -190,7 +190,7 @@
     "screenOverrides": []
   },
   "general": {
-    "avatarImage": "/home/nico/nixos-config/wallpapers/awaken-my-love.jpg",
+    "avatarImage": "/home/nico/nix-config/wallpapers/awaken-my-love.jpg",
     "dimmerOpacity": 0,
     "showScreenCorners": false,
     "forceBlackScreenCorners": false,
@@ -302,7 +302,7 @@
   "wallpaper": {
     "enabled": true,
     "overviewEnabled": true,
-    "directory": "/home/nico/nixos-config/wallpapers",
+    "directory": "/home/nico/nix-config/wallpapers",
     "monitorDirectories": [],
     "enableMultiMonitorDirectories": false,
     "showHiddenFiles": false,

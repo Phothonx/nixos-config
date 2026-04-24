@@ -47,7 +47,7 @@
         "Pictures"
         "Documents"
         "Videos"
-        "nixos-config"
+        "nix-config"
 
         { directory = ".ssh"; mode = "0700"; }
 
