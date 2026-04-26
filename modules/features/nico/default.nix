@@ -59,7 +59,6 @@
         ".local/share/Steam"
         ".local/share/osu"
         ".local/share/albiononline"
-        ".local/share/applications"
         ".local/share/zoxide"
         ".local/share/direnv"
         ".local/share/nvim"
@@ -71,7 +70,7 @@
         ".config/chromium"
         ".config/nvim"
         ".config/obs-studio"
-        ".config/discord"
+        # ".config/discord"
         ".config/Bitwarden"
         ".config/spotify"
         ".config/vesktop"
@@ -79,6 +78,7 @@
         ".config/unity3d"
       ];
       files = [
+        ".local/share/applications/albion.desktop"
       ];
     };
   };

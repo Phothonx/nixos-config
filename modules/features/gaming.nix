@@ -12,7 +12,6 @@
 
     environment.systemPackages = with pkgs; [
       # lutris
-      phoronix-test-suite
       heroic
       protonup-qt
       # bottles

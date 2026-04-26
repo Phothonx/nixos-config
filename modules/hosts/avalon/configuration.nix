@@ -17,7 +17,6 @@
       self.nixosModules.nico
     ];
 
-    # programs.lact.enable = true;
 
     documentation.man.cache.enable = true;
     documentation.dev.enable = true;
@@ -29,21 +28,20 @@
       mission-planner
       # kdePackages.kdenlive
       evemu
-      celluloid
+      vlc
       loupe
       imv
       bitwarden-desktop
       spotify
       localsend
+      proton-vpn
       teamspeak6-client
       ungoogled-chromium
       vesktop
-      discord
       pavucontrol
       crosspipe
       wl-clipboard
       via
-      qmk-udev-rules # for via
     ];
 
     programs.obs-studio = {
