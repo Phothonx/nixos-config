@@ -12,6 +12,10 @@
       jack.enable = true;
       wireplumber.enable = true;
 
+      extraLadspaPackages = [
+        pkgs.rnnoise-plugin
+      ];
+
       extraConfig.pipewire = {
 
         "99-input-denoising"."context.modules" = [{
@@ -23,7 +27,7 @@
                 {
                   type = "ladspa";
                   name = "rnnoise";
-                  plugin = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+                  plugin = "librnnoise_ladspa";
                   label = "noise_suppressor_mono";
                   control = {
                     "VAD Threshold (%)" = 93.0;
@@ -36,15 +40,14 @@
                   name = "micgain";
                   label = "linear";
                   control = {
-                    "Mult" = 2;
-                    "Add" = 0.0;
+                    "Mult" = 2.3;
                   };
                 }
               ];
               links = [{ output = "rnnoise:Output"; input = "micgain:In"; }];
+              inputs = [ "rnnoise:Input" ];
+              outputs = [ "micgain:Out" ];
             };
-            inputs = [ "rnnoise:Input" ];
-            outputs = [ "micgain:Out" ];
             "capture.props" = {
               "node.name" = "capture.rnnoise_source";
               "node.passive" = true;

@@ -63,6 +63,7 @@
         ".local/share/direnv"
         ".local/share/nvim"
         ".local/share/fish"
+        ".local/share/nautilus"
 
         ".config/mozilla"
         ".config/mozilla/firefox"

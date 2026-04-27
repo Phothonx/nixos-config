@@ -13,8 +13,7 @@
       inherit pkgs;
 
       extraPackages = with pkgs; [
-        bibata-cursors
-        wev
+        bibata-cursors wev
       ];
 
       settings = with self.theme; {
@@ -188,8 +187,10 @@
           "Print".screenshot = {};
           "Alt+Print".screenshot-window = {};
           "Ctrl+Print".screenshot-screen = {};
-          "Mod+Shift+S".screenshot-window = {};
+
           "Mod+S".screenshot-screen = {};
+          "Mod+Shift+S".screenshot = {};
+          "Mod+Ctrl+S".screenshot-window = {};
 
           "Mod+Shift+Delete".quit = {};
 
