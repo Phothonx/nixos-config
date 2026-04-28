@@ -1,4 +1,8 @@
-{inputs, self, ...}: {
+{
+  inputs,
+  self,
+  ...
+}: {
   flake.nixosModules.avalonConfiguration = {pkgs, ...}: {
     imports = [
       self.nixosModules.avalonHardware
@@ -16,7 +20,6 @@
 
       self.nixosModules.nico
     ];
-
 
     documentation.man.cache.enable = true;
     documentation.dev.enable = true;

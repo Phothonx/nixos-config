@@ -1,10 +1,13 @@
-{inputs, self, ...}: {
+{
+  inputs,
+  self,
+  ...
+}: {
   flake.nixosModules.camlannConfiguration = {pkgs, ...}: {
     imports = [
       self.nixosModules.camlannHardware
 
       inputs.impermanence.nixosModules.impermanence
-
 
       self.diskoConfigurations.camlann
       inputs.disko.nixosModules.disko
@@ -16,9 +19,9 @@
     boot.initrd.systemd.enable = true;
     boot.initrd.systemd.services.rollback-root = {
       description = "Rollback ZFS root to blank snapshot";
-      wantedBy = [ "initrd.target" ];
-      after = [ "zfs-import-zroot.service" ];
-      before = [ "sysroot.mount" ];
+      wantedBy = ["initrd.target"];
+      after = ["zfs-import-zroot.service"];
+      before = ["sysroot.mount"];
 
       unitConfig.DefaultDependencies = "no";
 

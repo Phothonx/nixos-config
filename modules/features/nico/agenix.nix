@@ -1,13 +1,17 @@
-{inputs, self, ...}: {
+{
+  inputs,
+  self,
+  ...
+}: {
   flake.nixosModules.nico = {pkgs, ...}: {
-    imports = [ inputs.agenix.nixosModules.default ];
+    imports = [inputs.agenix.nixosModules.default];
 
     environment.systemPackages = [
       inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
       self.packages.${pkgs.stdenv.hostPlatform.system}.git
     ];
 
-    age.identityPaths = [ "/persist/home/nico/.ssh/id_ed25519" ];
+    age.identityPaths = ["/persist/home/nico/.ssh/id_ed25519"];
 
     age.secrets = {
       psswd_nico.file = ../../../secrets/psswd_nico.age;

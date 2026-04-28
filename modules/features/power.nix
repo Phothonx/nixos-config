@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.power = { pkgs, ...}: {
+  flake.nixosModules.power = {pkgs, ...}: {
     services.thermald.enable = true;
     services.upower.enable = true;
     services.tuned = {

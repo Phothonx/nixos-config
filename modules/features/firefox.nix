@@ -1,5 +1,9 @@
 {self, ...}: {
-  flake.nixosModules.firefox = {pkgs, lib, ...}: {
+  flake.nixosModules.firefox = {
+    pkgs,
+    lib,
+    ...
+  }: {
     programs.firefox = {
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.firefox;

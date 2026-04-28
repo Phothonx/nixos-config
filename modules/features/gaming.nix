@@ -28,20 +28,20 @@
       # atlauncher
       # prismlauncher
 
-      (pkgs.buildFHSEnv (pkgs.appimageTools.defaultFhsEnvArgs // {
-        name = "fhs-albion";
-        targetPkgs = pkgs:
-          (pkgs.appimageTools.defaultFhsEnvArgs.targetPkgs pkgs)
-          ++ (with pkgs; [
-            krb5
-            libxau
-            libxdmcp
-          ]);
+      (pkgs.buildFHSEnv (pkgs.appimageTools.defaultFhsEnvArgs
+        // {
+          name = "fhs-albion";
+          targetPkgs = pkgs:
+            (pkgs.appimageTools.defaultFhsEnvArgs.targetPkgs pkgs)
+            ++ (with pkgs; [
+              krb5
+              libxau
+              libxdmcp
+            ]);
 
-        profile = ''export FHS=1'';
-        runScript = "fish";
-      }))
-
+          profile = ''export FHS=1'';
+          runScript = "fish";
+        }))
     ];
 
     # services.zerotierone.enable = true;

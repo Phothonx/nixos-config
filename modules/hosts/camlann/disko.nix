@@ -1,8 +1,8 @@
 {
   flake.diskoConfigurations.camlann = {
     disko.devices = {
-    # EMPTY SNAPSHOT after frist boot
-    # sudo zfs snapshot zroot/root@blank
+      # EMPTY SNAPSHOT after frist boot
+      # sudo zfs snapshot zroot/root@blank
 
       # SYSTEM DISK (SSD)
       disk.system = {
@@ -18,7 +18,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "umask=0077" ];
+                mountOptions = ["umask=0077"];
               };
             };
 
@@ -81,7 +81,6 @@
 
       # ZFS POOLS
       zpool = {
-
         # ROOT POOL (SSD)
         zroot = {
           type = "zpool";

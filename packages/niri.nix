@@ -13,7 +13,8 @@
       inherit pkgs;
 
       extraPackages = with pkgs; [
-        bibata-cursors wev
+        bibata-cursors
+        wev
       ];
 
       settings = with self.theme; {
@@ -78,7 +79,7 @@
 
         gestures = {
           hot-corners = {
-            off = _:{};
+            off = _: {};
           };
         };
 

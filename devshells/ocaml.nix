@@ -1,5 +1,5 @@
 {
-  perSystem = { pkgs, ...}: {
+  perSystem = {pkgs, ...}: {
     devShells.ocaml = pkgs.mkShell {
       packages = with pkgs; [
         ocaml

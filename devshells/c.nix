@@ -1,5 +1,5 @@
 {
-  perSystem = { pkgs, ...}: {
+  perSystem = {pkgs, ...}: {
     devShells.c = pkgs.mkShell {
       packages = with pkgs; [
         gcc

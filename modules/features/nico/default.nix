@@ -5,7 +5,6 @@
     lib,
     ...
   }: {
-
     users.mutableUsers = false;
 
     users.users.nico = {
@@ -49,7 +48,10 @@
         "Videos"
         "nix-config"
 
-        { directory = ".ssh"; mode = "0700"; }
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
 
         ".cache/fish"
         ".cache/mozilla"
