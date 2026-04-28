@@ -23,7 +23,10 @@
 
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [(inputs.import-tree [./modules ./packages ./devshells ./theme.nix])];
+      imports = [
+        inputs.disko.flakeModules.default
+        (inputs.import-tree [./modules ./packages ./devshells ./theme.nix])
+        ];
       systems = [
         # "aarch64-darwin"
         "aarch64-linux"

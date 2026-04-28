@@ -12,6 +12,7 @@
       enable = true;
       hideMounts = true;
       directories = [
+        "/etc/nixos"
         "/var/log"
         "/var/lib/bluetooth"
         "/var/lib/nixos"
@@ -33,7 +34,7 @@
     gnused
   ];
   boot.initrd.systemd.services.rollback-root = {
-    description = "Rollback Btrfs root subvolume";
+    description = "Rollback Btrfs root";
     wantedBy = [ "initrd.target" ];
     after = [ "systemd-cryptsetup@cryptroot.service" ];
     before = [ "sysroot.mount" ];
