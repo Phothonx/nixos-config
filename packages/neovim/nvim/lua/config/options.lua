@@ -5,14 +5,14 @@ local opt = vim.opt
 
 
 -- General
-o.undofile    = true                    -- Enable persistent undo (see also `:h undodir`)
-o.clipboard   = "unnamedplus"           -- use global keyboard
+o.undofile    = true                     -- Enable persistent undo (see also `:h undodir`)
+o.clipboard   = "unnamedplus"            -- use global keyboard
 
-o.backup      = false                   -- Don't store backup while overwriting the file
-o.writebackup = false                   -- Don't store backup while overwriting the file
-o.wildmenu    = false                   -- use blink cmp instead
+o.backup      = false                    -- Don't store backup while overwriting the file
+o.writebackup = false                    -- Don't store backup while overwriting the file
+o.wildmenu    = false                    -- use blink cmp instead
 o.wildchar    = vim.fn.char2nr('<C-t>')  -- use blink cmp instead
-o.swapfile    = false                   -- my sworn ennemy
+o.swapfile    = false                    -- my sworn ennemy
 
 
 -- Appearance
@@ -37,33 +37,28 @@ opt.shortmess:append "sI"       -- disable nvim intro
 -- indenting
 o.expandtab                = true                       -- tabs to spaces
 o.shiftwidth               = 2                          -- nb of spaces for indenting
-o.indentexpr               = "nvim_treesitter#indent()"
 o.tabstop                  = 2                          -- size of tabs in spaces
 o.smarttab                 = true
-g.python_recommended_style = 0
+opt.smartindent            = true
 
 -- Editing
-o.ignorecase    = true                        -- Ignore case when searching (use `\C` to force not doing that)
-o.smartcase     = true                        -- Don't ignore case when searching if pattern has upper case
 o.incsearch     = true                        -- Show search results while typing
 o.infercase     = true                        -- Infer letter cases for a richer built-in keyword completion
+o.ignorecase    = true -- ignore case in search
+o.smartcase     = true -- but enable if used
+o.hlsearch      = true -- do not clear highlight
 
 o.completeopt   = 'menuone,noinsert,noselect' -- Customize completions
 o.virtualedit   = 'block'                     -- Allow going past the end of line in visual block mode
 o.formatoptions = 'qjl1'                      -- Don't autoformat comments
 
+-- Spell
+opt.spelllang = { "en", "fr" }
 
 -- Visual
-o.scrolloff  = 6
-o.mouse      = "a"
+o.scrolloff  = 8
+o.mouse      = ""
 o.laststatus = 3   -- status line everywhere
-
-
--- Search
-o.ignorecase = true -- ignore case in search
-o.smartcase  = true -- but enable if used
-o.hlsearch   = true -- do not clear highlight
-
 
 -- Neovide
 if vim.g.neovide then

@@ -14,13 +14,8 @@
 
         specs.plugins = {
           data = with pkgs.vimPlugins; [
-            # lazy-nvim
-
             # COLORSHEMES
             catppuccin-nvim
-
-            # LSP / TS
-            pkgs.vimPlugins.nvim-treesitter.withAllGrammars
 
             # DEPS
             nvim-web-devicons
@@ -32,19 +27,14 @@
             # OTHER
             vimwiki
             friendly-snippets
-            iron-nvim
             blink-cmp
             flash-nvim
             which-key-nvim
-            Coqtail
-
-            # from old extraLuaPackages
-            # pathlib-nvim
-            # lua-utils-nvim
           ];
         };
 
         extraPackages = with pkgs; [
+          # PACKAGES
           gcc
           tree-sitter
           cmake
@@ -56,15 +46,14 @@
           mermaid-cli
           ghostscript
           trashy
-
+          luarocks
           mark2html
-
           zathura
-
           biber
           pstree
           xdotool
 
+          # LSP
           markdown-oxide
           stylua
           ccls
@@ -77,7 +66,23 @@
           typescript-language-server
           bash-language-server
 
-          luarocks
+          # TS
+          (pkgs.tree-sitter.withPlugins (ps: with ps; [
+            tree-sitter-nix
+            tree-sitter-lua
+            tree-sitter-c
+            tree-sitter-vim
+            tree-sitter-bash
+            tree-sitter-python
+            tree-sitter-rust
+            tree-sitter-javascript
+            tree-sitter-typescript
+            tree-sitter-json
+            tree-sitter-toml
+            tree-sitter-yaml
+            tree-sitter-markdown
+            tree-sitter-markdown-inline
+          ]))
         ];
       };
   };

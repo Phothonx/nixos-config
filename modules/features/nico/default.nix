@@ -46,12 +46,10 @@
         "Pictures"
         "Documents"
         "Videos"
+        "wiki"
         "nix-config"
 
-        {
-          directory = ".ssh";
-          mode = "0700";
-        }
+        { directory = ".ssh"; mode = "0700"; }
 
         ".cache/fish"
         ".cache/mozilla"
